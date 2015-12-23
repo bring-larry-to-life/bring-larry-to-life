@@ -1,11 +1,10 @@
 var express = require('express');
 var router = express.Router();
-var graph = require('../lib/graph')
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  graph.postStatus('First post in a long time!\nLove Larry :^)');
-
+  var jobs = req.jobs;
+  console.log(jobs);
   res.render('index', { title: 'Express' });
 });
 

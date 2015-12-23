@@ -8,7 +8,15 @@ var bodyParser = require('body-parser');
 var routes = require('./routes/index');
 var users = require('./routes/users');
 
+var jobs = require('./lib/jobs');
+
 var app = express();
+
+// included for access to cron jobs from routes
+app.use(function(req, res, next) {
+    req.jobs = jobs;
+    next();
+});
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
